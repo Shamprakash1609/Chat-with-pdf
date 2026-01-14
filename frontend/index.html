@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocQuery - AI PDF Assistant</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>DocQuery</h1>
+            <p>Upload a PDF and ask questions about it.</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="file-drop-area" id="drop-area">
+                    <span class="file-msg">Drag & Drop PDF here or Click to Upload</span>
+                    <input class="file-input" type="file" id="pdf-upload" accept="application/pdf" multiple>
+                </div>
+                <div id="upload-status" class="status-msg"></div>
+            </section>
+
+            <section class="documents-section" style="margin-bottom: 2rem;">
+                <h3>Current Documents</h3>
+                <ul id="documents-list">
+                    <!-- Documents will be listed here -->
+                </ul>
+            </section>
+
+            <section class="chat-section">
+                <div class="search-container">
+                    <textarea id="query-input" placeholder="Ask a question about your document..." disabled></textarea>
+                    <button id="ask-btn" disabled>Ask</button>
+                </div>
+
+                <div id="loading-spinner" class="spinner hidden"></div>
+
+                <div id="response-container" class="hidden">
+                    <div class="answer-box">
+                        <h3>Answer</h3>
+                        <div id="answer-text"></div>
+                    </div>
+
+                    <div class="sources-box">
+                        <h4>Sources</h4>
+                        <ul id="sources-list"></ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
