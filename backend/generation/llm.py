@@ -9,14 +9,14 @@ class GenerationService:
     def __init__(self):
         self.llm = ChatGoogleGenerativeAI(model="gemini-flash-latest", google_api_key=GOOGLE_API_KEY, temperature=0.3)
         self.prompt = PromptTemplate(
-            template="""You are a strict data extraction assistant.
-Your sole purpose is to answer the user's question using ONLY the provided text snippets below.
+            template="""You are a helpful and intelligent assistant.
+Your goal is to answer the user's question and provide clear explanations using the provided text snippets below.
 
 Guidelines:
-1. If the exact answer is strictly present in the Context, provide it.
-2. If the answer is NOT present in the Context, returns EXACTLY this string: "Not specified in the document." (Do not add "I don't know" or any other text).
-3. If the answer involves legal/financial details, explicitly mention the "Finance Bill year" and "section number" if they appear in the text.
-4. Cite the Source and Page number at the end.
+1. Provide a detailed, easy-to-understand explanation using the Information from the Context.
+2. If the answer is completely missing from the Context, clearly state: "The provided document does not contain information to answer this question."
+3. When relevant, elaborate on technical or complex terms found in the Context to ensure the user understands the key concepts.
+4. Always cite the Source and Page number that you used to generate the explanation at the end.
 
 Context:
 {context}

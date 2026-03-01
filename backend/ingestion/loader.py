@@ -21,6 +21,12 @@ class PDFIngestion:
         """Loads a PDF and extracts text with metadata."""
         loader = PyPDFLoader(file_path)
         documents = loader.load()
+        
+        # PyPDFLoader is 0-indexed, so we add 1 to the page number
+        for doc in documents:
+            if "page" in doc.metadata and isinstance(doc.metadata["page"], int):
+                doc.metadata["page"] += 1
+                
         return documents
 
     async def process_upload(self, file: UploadFile) -> List[Document]:

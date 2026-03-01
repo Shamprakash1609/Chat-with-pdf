@@ -72,30 +72,39 @@ venv\Scripts\activate
 pip install -r backend/requirements.txt
 ```
 
-### 2️⃣ Environment Config
-Securely configure your API keys.
+### 2️⃣ Environment Config (API Key)
+The application requires a Google Gemini API Key to function correctly.
 
+1. Get your API key from [Google AI Studio](https://aistudio.google.com/).
+2. Copy the example environment file:
 ```bash
 cp backend/.env.example backend/.env
-# Open backend/.env and paste your GOOGLE_API_KEY
+```
+3. Open `backend/.env` and paste your API key:
+```env
+GOOGLE_API_KEY="your-api-key-here"
 ```
 
 ---
 
 ## ⚡ Quick Start
 
-Run the application with a single command!
+You need to run **both** the backend API and the frontend UI.
 
-### Option A: Helper Script (Recommended)
+### 1. Start the Backend API
 ```bash
+# In the project root with your venv activated:
 ./run.sh
 ```
+*The backend server will start at `http://127.0.0.1:8000`*
 
-### Option B: Manual Start
+### 2. Start the Frontend UI
+Open a **new terminal tab**, navigate to the project directory, and start a simple web server:
 ```bash
-uvicorn backend.main:app --reload
+cd Chat-with-pdf
+python3 -m http.server 8001 --directory frontend
 ```
-*The server will start at `http://127.0.0.1:8000`*
+*Access the application interface at `http://localhost:8001`*
 
 ---
 
